@@ -8,12 +8,21 @@ const smp = new SpeedMeasurePlugin();
 
 const config = {
   context: __dirname,
-  entry: ['./app.js'],
+  entry: ['./src/index.js'],
   mode: 'development',
   output: {
     filename: './output.js',
     path: resolve(__dirname, './output'),
     publicPath: 'output/'
+  },
+  module: {
+    rules: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader'
+      }
+    }]
   }
 };
 
